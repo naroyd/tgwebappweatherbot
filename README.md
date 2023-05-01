@@ -4,6 +4,7 @@ Telegram Web app weather bot using OWM
 Only for personal usage
 BOT AND SITE CODES NOT ASYNCHRONOUS!!!
 Site adaptive only for smartphones
+Bot settings: 24h, °C, meters, mmHz
 
 If you want to use this project:
 1. Register in the openweathermap.com and paste your token to config.py of site part
