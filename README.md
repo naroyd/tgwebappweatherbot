@@ -1,6 +1,8 @@
 # tgwebappweatherbot
 Telegram Web app weather bot using OWM
 
+Only for personal usage
+
 BOT AND SITE CODES NOT ASYNCHRONOUS!!!
 
 If you want to use this project:
