@@ -2,9 +2,13 @@
 Telegram Web app weather bot using OWM
 
 Only for personal usage
+
 BOT AND SITE CODES NOT ASYNCHRONOUS!!!
+
 Site adaptive only for smartphones
+
 Bot settings: 24h, °C, meters, mmHz
+
 Images used from Midjourney
 
 If you want to use this project:
