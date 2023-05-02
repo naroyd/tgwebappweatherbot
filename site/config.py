@@ -1,0 +1,1 @@
+OWM_TOKEN = "your-owm-token"

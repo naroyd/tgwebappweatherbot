@@ -1,0 +1,5 @@
+astral==3.2
+geopy==2.3.0
+pyowm==3.3.0
+pytz==2023.3
+timezonefinder==6.2.0

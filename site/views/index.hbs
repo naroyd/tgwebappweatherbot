@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link rel="stylesheet" href="index.css">
+    
+</head>
+<body class="ff c-w">
+    <div class="p-a t-0 b-0 l-0 r-0 z-5 bgc-b50 d-n bgc-b" id="searchBox">
+        <div class="search p-a b-0 r-0 l-0 h-32 brrt-8 pad bgc-b">
+            <form action="/" class="bgc-w pad-bl h-12 brr-6 mb-16 p-r">
+                <label for="searchBar"><img src="assets/icons/others/search.svg" class="h-12 w-12 d-ib tr-tr--37_5"></label>
+                <input type="text" id="searchBar" name="city" placeholder="City, Country (optional)" class="fw-reg fs-12 br-n t-6 b-6 r-6 l-20 ff p-a bgc-w ol-n">
+                <button type="submit" class="p-a b-6 r-6 t-6 tr-tr--30 br-n fw-500 fs-12">Search</button>
+            </form>
+        </div>
+    </div>
+    <div class="tal-c h-w w-w p-a z-0" id="image" style="background-image: url(assets/images/{{weather.main.image}}.png);">
+        <div class="p-a t-0 l-0 h-w w-w bgc-b30"></div>
+        <div class="p-r t-c tr-tr--25">
+            <p class="d-ib fw-reg fs-48">{{weather.main.temp}}<span class="p-a t-0 tr-tr-25 fw-500 fs-20">°C</span></p>
+            <div class="mt-42 h-14">
+                <img src="{{weather.main.icon}}.svg" class="d-ib h-14 w-14 val-t f-w">
+                <p class="d-ib fw-md fs-14 tal-c val-t tr-tr-25">{{weather.main.weather}}</p>
+            </div>
+            <div class="location d-ib r-0 l-0 mt-6 tal-c h-14 p-r">
+                <img src="assets/icons/others/location.svg" class="location d-ib h-14 w-14 val-t">
+                <p class="location d-ib fw-500 fs-12 val-t tr-tr-37_5">{{weather.main.location}}</p>
+            </div>
+            <div class="mt-50 tal-c h-14">
+                <p class="d-ib fw-reg fs-14 p-r val-t tr-tr-25"><span id="day">{{weather.main.day}}</span> <span id="month">{{weather.main.month}}</span></p>
+            </div>
+        </div>
+    </div>
+    <div class="pad p-a t--4_4 brrt-8 b-0 z-1 bgc-b">
+        <div class="d-fl pad-bl mb-16 br-1-s-w0_5 brr-8 bgc-bl">
+            <div class="d-ib tal-l">
+                <p class="fw-md fs-12">Time</p>
+                {{#each weather.forecast}}
+                    <p class="fw-500 fs-12 mt-8 h-14 val-t tr-tr-25">{{this.time}}</p>
+                {{/each}}
+            </div>
+            <div class="d-ib tal-c">
+                <p class="fw-md fs-12">Weather</p>
+                {{#each weather.forecast}}
+                    <div class="mt-8 p-r h-14">
+                        <img src="{{this.icon}}.svg" class="d-ib h-14 w-14 tal-l val-t mr-2">
+                        <p class="d-ib fw-reg fs-12 tal-r val-t tr-tr-25">{{this.weather}}</p>
+                    </div>
+                {{/each}}
+            </div>
+            <div class="d-ib tal-c">
+                <p class="fw-md fs-12">Temp.</p>
+                {{#each weather.forecast}}
+                    <p class="fw-500 fs-12 mt-8 h-14 val-t tr-tr-25">{{this.temp}}°C</p>
+                {{/each}}
+            </div>
+            <div class="d-ib tal-r">
+                <p class="fw-md fs-12">Feel temp.</p>
+                {{#each weather.forecast}}
+                    <p class="fw-reg fs-12 mt-8 h-14 val-t tr-tr-25">{{this.feel}}°C</p>
+                {{/each}}
+            </div>
+        </div>
+        <div class="d-fl mb-16">
+            <div class="d-ib pad-bl w-140 br-1-s-w0_5 brr-8 bgc-bl">
+                <div class="fw-md h-32 mb-10">
+                    <img src="assets/icons/others/compas.svg" class="d-ib h-32 w-32" id="compas">
+                    <p class="d-ib fs-12 h-32 w-107 p-rtal-c val-md tal-c tr-tr-5">{{weather.wind.dir}}</p>
+                </div>
+                <div class="p-r h-12 mb-10">
+                    <p class="d-ib tal-l fw-md fs-12 p-a b-0 l-0 t-0 tr-tr-25">Speed:</p>
+                    <p class="d-ib tal-r fw-reg fs-12 p-a b-0 r-0 t-0 tr-tr-25">{{weather.wind.speed}} m/s</p>
+                </div>
+                <div class="p-r h-12">
+                    <p class="d-ib tal-l fw-md fs-12 p-a b-0 l-0 t-0 tr-tr-25">Gusts:</p>
+                    <p class="d-ib tal-r fw-reg fs-12 p-a b-0 r-0 t-0 tr-tr-25">{{weather.wind.gusts}} m/s</p>
+                </div>
+            </div>
+            <div class="d-ib pad-bl w-140 br-1-s-w0_5 brr-8 bgc-bl">
+                <div class="p-r h-12 mb-10">
+                    <p class="d-ib tal-l fw-md fs-12 p-a b-0 l-0 t-0 tr-tr-25">Humidity:</p>
+                    <p class="d-ib tal-r fw-reg fs-12 p-a b-0 r-0 t-0 tr-tr-25">{{weather.air.wetness}}%</p>
+                </div>
+                <div class="p-r h-12 mb-10">
+                    <p class="d-ib tal-l fw-md fs-12 p-a b-0 l-0 t-0 tr-tr-25">Pressure:</p>
+                    <p class="d-ib tal-r fw-reg fs-12 p-a b-0 r-0 t-0 tr-tr-25">{{weather.air.pressure}} mmHg</p>
+                </div>
+                <div class="p-r h-12 mb-10">
+                    <p class="d-ib tal-l fw-md fs-12 p-a b-0 l-0 t-0 tr-tr-25">AQI:</p>
+                    <p class="d-ib tal-r fw-reg fs-12 p-a b-0 r-0 t-0 tr-tr-25">{{weather.air.aqi}}</p>
+                </div>
+                <div class="p-r h-12">
+                    <p class="d-ib tal-l fw-md fs-12 p-a b-0 l-0 t-0 tr-tr-25">UVI:</p>
+                    <p class="d-ib tal-r fw-reg fs-12 p-a b-0 r-0 t-0 tr-tr-25">{{weather.air.uvi}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="pad-bl br-1-s-w0_5 brr-8 padb bgc-bl">
+            <div class="d-fl jc-sa">
+                <div class="d-ib w-148">
+                    <p class="tal-c fw-md fs-12 mb-8">Sun</p>
+                    <div class="p-r mb-4 h-12">
+                        <p class="d-ib p-a l-0 tal-l fw-500 fs-12 b-0 t-0 tr-tr-25">Rise:</p>
+                        <p class="d-ib p-a r-0 tal-r fw-reg fs-12 b-0 t-0 tr-tr-25">{{weather.rise_set.sunrise}}</p>
+                    </div>
+                    <div class="p-r h-12">
+                        <p class="d-ib tal-l fw-500 fs-12 p-a l-0 b-0 t-0 tr-tr-25">Set:</p>
+                        <p class="d-ib tal-r fw-reg fs-12 p-a r-0 b-0 t-0 tr-tr-25">{{weather.rise_set.sunset}}</p>
+                    </div>
+                </div>
+                <div class="d-ib w-148">
+                    <p class="tal-c fw-md fs-12 mb-8">Moon</p>
+                    <div class="p-r mb-4 h-12">
+                        <p class="d-ib tal-l fw-500 fs-12 p-a l-0 b-0 t-0 tr-tr-25">Rise:</p>
+                        <p class="d-ib tal-r fw-reg fs-12 p-a r-0 b-0 t-0 tr-tr-25">{{weather.rise_set.moonrise}}</p>
+                    </div>
+                    <div class="p-r h-12">
+                        <p class="d-ib tal-l fw-500 fs-12 p-a l-0 b-0 t-0 tr-tr-25">Set:</p>
+                        <p class="d-ib tal-r fw-reg fs-12 p-a r-0 b-0 t-0 tr-tr-25">{{weather.rise_set.moonset}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="p-r ov-n">
+                <img src="assets/icons/weather/rise_set/sun.svg" class="p-a z-4 pad-2 brr-hlf bgc-bl h-16 w-16 tr-tr-pl b-0 l-0" id="sun">
+                <img src="assets/icons/weather/rise_set/moon/{{weather.rise_set.moonphase}}.svg" class="p-a z-3 pad-2 brr-hlf bgc-bl h-16 w-16 tr-tr-pl b-0 l-0" id="moon">
+                <img src="assets/icons/others/horizonte.svg" class="horizonte mt-24 w-316 h-51 z-2">
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+    <script>
+        wind_dir({{weather.wind.deg}});
+        sun_pos({{weather.rise_set.sun_percent}});
+        moon_pos({{weather.rise_set.moon_percent}});
+    </script>
+</body>
+</html>
